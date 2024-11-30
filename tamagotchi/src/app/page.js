@@ -11,6 +11,7 @@ import React, { useState } from "react";
 export default function Home() {
   const [isDead, setIsDead] = useState(false);
   const [startPage, setStartPage] = useState(true);
+  const [currency, setCurrency] = useState(0);
   const [inventory, setInventory] = useState({});
   {
     /* Bar States */
@@ -29,7 +30,7 @@ export default function Home() {
 
   function handleRestart() {
     setIsDead(false);
-    setStartPage(false);
+    setStartPage(true);
   }
 
   return (
@@ -50,11 +51,16 @@ export default function Home() {
       )}
       {!startPage && !isDead && (
         <main className="flex flex-col gap-8 row-start-2 items-center w-full max-w-[1200px]">
+          <div className="flex items-center justify-center w-full text-2xl font-bold text-white bg-gradient-to-r from-gray-700 via-gray-900 to-black rounded-md shadow-lg p-4">
+            ${currency}
+          </div>
+
           <HealthBar
             label="Health"
             progress={healthProgress}
             setProgress={setHealthProgress}
             setIsDead={setIsDead}
+            setCurrency={setCurrency}
           />
 
           <HungerBar
@@ -62,6 +68,7 @@ export default function Home() {
             progress={hungerProgress}
             setProgress={setHungerProgress}
             setIsDead={setIsDead}
+            setCurrency={setCurrency}
           />
 
           <HappinessBar
@@ -69,6 +76,7 @@ export default function Home() {
             progress={happinessProgress}
             setProgress={setHappinessProgress}
             setIsDead={setIsDead}
+            setCurrency={setCurrency}
           />
 
           {/* Inventory */}
@@ -96,7 +104,12 @@ export default function Home() {
             }}
           />
           {/* Add other content below */}
-          <Shop inventory={inventory} setInventory={setInventory} />
+          <Shop
+            inventory={inventory}
+            setInventory={setInventory}
+            currency={currency}
+            setCurrency={setCurrency}
+          />
         </main>
       )}
       <footer className="p-16 row-start-3 flex gap-6 flex-wrap items-center justify-center">

@@ -7,10 +7,25 @@ export default function HappinessBar({
   progress,
   setProgress,
   setIsDead,
+  setCurrency,
 }) {
-  function play() {
+  const calculateReward = (H, baseReward = 50, penaltyRate = 2) => {
+    let reward;
+    if (H >= 80) {
+      reward = -(H - 80) * penaltyRate;
+    } else if (H <= 20) {
+      reward = -(20 - H) * penaltyRate;
+    } else {
+      reward = baseReward;
+    }
+    return reward;
+  };
+
+  const play = () => {
+    const reward = calculateReward(progress);
     setProgress(Math.min(100, progress + 20));
-  }
+    setCurrency((prev) => prev + reward);
+  };
 
   function getColor() {
     if (progress >= 70) return "bg-yellow-300";
