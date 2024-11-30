@@ -1,4 +1,7 @@
 // components/ProgressBar.js
+// "use client";
+import React, { useState, useEffect } from "react";
+
 export default function ProgressBar({ label, value, color }) {
   return (
     <div className="w-full max-w-sm mb-1">
