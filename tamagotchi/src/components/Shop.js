@@ -22,7 +22,7 @@ export default function Shop({ inventory, setInventory }) {
       {isShopOpen && (
         <div className="flex flex-col md:flex-row gap-4">
           <ShopItem
-            name="Puffle Chow"
+            name="Pet Chow"
             icon="🥫"
             price="10"
             onClick={purchaseItem}
