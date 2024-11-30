@@ -1,4 +1,5 @@
 // components/HungerBar.js
+import Button from "./Button";
 import React, { useState, useEffect } from "react";
 
 export default function HungerBar({ label, value, setIsDead }) {
@@ -39,12 +40,7 @@ export default function HungerBar({ label, value, setIsDead }) {
           ></div>
         </div>
       </div>
-      <button
-        className="px-4 py-2 bg-red-400 text-white rounded"
-        onClick={feed}
-      >
-        Feed
-      </button>
+      <Button text="Feed" onClick={feed} />
     </div>
   );
 }

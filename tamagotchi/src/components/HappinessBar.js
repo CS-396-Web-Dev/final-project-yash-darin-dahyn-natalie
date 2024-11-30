@@ -1,4 +1,5 @@
 // components/HappinessBar.js
+import Button from "./Button";
 import React, { useState, useEffect } from "react";
 
 export default function HappinessBar({ label, value, setIsDead }) {
@@ -39,12 +40,7 @@ export default function HappinessBar({ label, value, setIsDead }) {
           ></div>
         </div>
       </div>
-      <button
-        className="px-4 py-2 bg-red-400 text-white rounded"
-        onClick={play}
-      >
-        Play
-      </button>
+      <Button text="Play" onClick={play} />
     </div>
   );
 }
