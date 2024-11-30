@@ -1,17 +1,29 @@
 "use client"; // Ensure client-side rendering for animations
 
 import { motion } from "framer-motion";
-// import ProgressBar from "../components/ProgressBar";
-import HungerBar from "../components/HungerBar";
+import HungerBar from "@/components/HungerBar";
 import HappinessBar from "@/components/HappinessBar";
 import HealthBar from "@/components/HealthBar";
+import Inventory from "@/components/Inventory";
+import Shop from "@/components/Shop";
 import React, { useState } from "react";
 
 export default function Home() {
   const [isDead, setIsDead] = useState(false);
   const [startPage, setStartPage] = useState(true);
   const [currency, setCurrency] = useState(0);
-
+  const [inventory, setInventory] = useState({});
+  {
+    /* Bar States */
+  }
+  const [happinessProgress, setHappinessProgress] = useState(100);
+  const [healthProgress, setHealthProgress] = useState(100);
+  const [hungerProgress, setHungerProgress] = useState(100);
+  const barStates = {
+    happiness: { state: happinessProgress, setState: setHappinessProgress },
+    health: { state: healthProgress, setState: setHealthProgress },
+    hunger: { state: hungerProgress, setState: setHungerProgress },
+  };
   const handleStart = () => {
     setStartPage(false);
   };
@@ -45,23 +57,33 @@ export default function Home() {
 
           <HealthBar
             label="Health"
-            value={100}
+            progress={healthProgress}
+            setProgress={setHealthProgress}
             setIsDead={setIsDead}
             setCurrency={setCurrency}
           />
 
           <HungerBar
             label="Hunger"
-            value={100}
+            progress={hungerProgress}
+            setProgress={setHungerProgress}
             setIsDead={setIsDead}
             setCurrency={setCurrency}
           />
 
           <HappinessBar
             label="Happiness"
-            value={100}
+            progress={happinessProgress}
+            setProgress={setHappinessProgress}
             setIsDead={setIsDead}
             setCurrency={setCurrency}
+          />
+
+          {/* Inventory */}
+          <Inventory
+            inventory={inventory}
+            setInventory={setInventory}
+            barStates={barStates}
           />
 
           {/* Animated Puffle */}
@@ -82,6 +104,7 @@ export default function Home() {
             }}
           />
           {/* Add other content below */}
+          <Shop inventory={inventory} setInventory={setInventory} />
         </main>
       )}
       <footer className="p-16 row-start-3 flex gap-6 flex-wrap items-center justify-center">

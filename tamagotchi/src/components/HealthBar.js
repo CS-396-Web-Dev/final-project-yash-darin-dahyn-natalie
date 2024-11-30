@@ -1,9 +1,14 @@
 // components/HealthBar.js
-import React, { useState, useEffect } from "react";
+import Button from "./Button";
+import React, { useEffect } from "react";
 
-export default function HealthBar({ label, value, setIsDead, setCurrency }) {
-  const [progress, setProgress] = useState(value);
-
+export default function HealthBar({
+  label,
+  progress,
+  setProgress,
+  setIsDead,
+  setCurrency,
+}) {
   const calculateReward = (H, baseReward = 50, penaltyRate = 2) => {
     let reward;
     if (H >= 80) {
@@ -52,12 +57,7 @@ export default function HealthBar({ label, value, setIsDead, setCurrency }) {
           ></div>
         </div>
       </div>
-      <button
-        className="px-4 py-2 bg-red-400 text-white rounded"
-        onClick={care}
-      >
-        Take Care
-      </button>
+      <Button text="Take Care" onClick={care} />
     </div>
   );
 }
