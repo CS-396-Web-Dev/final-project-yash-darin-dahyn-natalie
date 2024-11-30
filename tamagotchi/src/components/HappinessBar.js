@@ -1,10 +1,8 @@
 // components/HappinessBar.js
 import Button from "./Button";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
-export default function HappinessBar({ label, value, setIsDead }) {
-  const [progress, setProgress] = useState(value);
-
+export default function HappinessBar({ label, progress, setProgress, setIsDead }) {
   function play() {
     setProgress(Math.min(100, progress + 20));
   }

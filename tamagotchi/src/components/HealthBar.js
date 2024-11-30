@@ -1,10 +1,8 @@
 // components/HealthBar.js
 import Button from "./Button";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 
-export default function HealthBar({ label, value, setIsDead }) {
-  const [progress, setProgress] = useState(value);
-
+export default function HealthBar({ label, progress, setProgress, setIsDead }) {
   function care() {
     setProgress(Math.min(100, progress + 20));
   }
