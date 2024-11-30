@@ -2,12 +2,22 @@ import Button from "./Button";
 import ShopItem from "./ShopItem";
 import { useState } from "react";
 
-export default function Shop({ inventory, setInventory }) {
+export default function Shop({
+  inventory,
+  setInventory,
+  currency,
+  setCurrency,
+}) {
   const [isShopOpen, setIsShopOpen] = useState(false);
   function openShop() {
     setIsShopOpen(!isShopOpen);
   }
-  function purchaseItem(icon) {
+  function purchaseItem(icon, price) {
+    if (price > currency) {
+      return;
+    } else {
+      setCurrency(currency - price);
+    }
     const newInventory = { ...inventory };
     if (inventory.hasOwnProperty(icon)) {
       newInventory[icon] += 1;

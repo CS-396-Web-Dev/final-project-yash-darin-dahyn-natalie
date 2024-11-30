@@ -104,7 +104,12 @@ export default function Home() {
             }}
           />
           {/* Add other content below */}
-          <Shop inventory={inventory} setInventory={setInventory} />
+          <Shop
+            inventory={inventory}
+            setInventory={setInventory}
+            currency={currency}
+            setCurrency={setCurrency}
+          />
         </main>
       )}
       <footer className="p-16 row-start-3 flex gap-6 flex-wrap items-center justify-center">
