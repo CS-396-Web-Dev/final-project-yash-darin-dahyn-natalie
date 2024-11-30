@@ -35,7 +35,7 @@ export default function Home() {
 
   return (
     <div className="grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <h1 className="text-4xl font-extrabold bf-black bg-clip-text mb-8">
+      <h1 className="text-4xl font-extrabold text-center bf-black bg-clip-text mb-8">
         Your Tamagotchi
       </h1>{" "}
       {startPage && (
@@ -50,7 +50,7 @@ export default function Home() {
         </div>
       )}
       {!startPage && !isDead && (
-        <main className="flex flex-col gap-8 row-start-2 items-center w-full max-w-[1200px]">
+        <main className="flex flex-col gap-8 row-start-2 items-center w-full max-w-[1200px] mx-auto">
           <div className="flex items-center justify-center w-full text-2xl font-bold text-white bg-gradient-to-r from-gray-700 via-gray-900 to-black rounded-md shadow-lg p-4">
             ${currency}
           </div>
