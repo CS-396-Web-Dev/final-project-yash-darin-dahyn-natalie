@@ -2,7 +2,12 @@
 import Button from "./Button";
 import React, { useEffect } from "react";
 
-export default function HappinessBar({ label, progress, setProgress, setIsDead }) {
+export default function HappinessBar({
+  label,
+  progress,
+  setProgress,
+  setIsDead,
+}) {
   function play() {
     setProgress(Math.min(100, progress + 20));
   }

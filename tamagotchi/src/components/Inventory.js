@@ -9,11 +9,13 @@ export default function Inventory({ inventory, setInventory, barStates }) {
       newInventory[icon] -= 1;
     }
     if (icon === "🥫") {
-        barStates.hunger.setState(Math.min(100, barStates.hunger.state + 30));
+      barStates.hunger.setState(Math.min(100, barStates.hunger.state + 30));
     } else if (icon === "💊") {
-        barStates.health.setState(Math.min(100, barStates.health.state + 30));
+      barStates.health.setState(Math.min(100, barStates.health.state + 30));
     } else if (icon === "🪀") {
-        barStates.happiness.setState(Math.min(100, barStates.happiness.state + 30));
+      barStates.happiness.setState(
+        Math.min(100, barStates.happiness.state + 30),
+      );
     }
     setInventory(newInventory);
   }
