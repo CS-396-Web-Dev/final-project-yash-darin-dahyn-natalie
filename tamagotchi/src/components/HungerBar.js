@@ -24,7 +24,7 @@ export default function HungerBar({ label, value, setIsDead }) {
             if (setIsDead) {
                 clearInterval(interval)
             }
-        }, 100)
+        }, 10000)
         return () => clearInterval(interval)
     }, [progress, setIsDead])
 
