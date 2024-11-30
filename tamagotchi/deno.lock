@@ -3,6 +3,7 @@
   "specifiers": {
     "npm:eslint-config-next@15.0.2": "15.0.2_eslint@8.57.1_@typescript-eslint+parser@8.15.0__eslint@8.57.1_eslint-plugin-import@2.31.0__eslint@8.57.1",
     "npm:eslint@8": "8.57.1",
+    "npm:framer-motion@^11.11.17": "11.12.0",
     "npm:next@15.0.2": "15.0.2_react@19.0.0-rc-02c0e824-20241028_react-dom@19.0.0-rc-02c0e824-20241028__react@19.0.0-rc-02c0e824-20241028",
     "npm:postcss@8": "8.4.47",
     "npm:prettier@^3.3.3": "3.3.3",
@@ -1080,6 +1081,12 @@
       "dependencies": [
         "cross-spawn",
         "signal-exit"
+      ]
+    },
+    "framer-motion@11.12.0": {
+      "integrity": "sha512-gZaZeqFM6pX9kMVti60hYAa75jGpSsGYWAHbBfIkuHN7DkVHVkxSxeNYnrGmHuM0zPkWTzQx10ZT+fDjn7N4SA==",
+      "dependencies": [
+        "tslib"
       ]
     },
     "fs.realpath@1.0.0": {
@@ -2320,6 +2327,7 @@
       "dependencies": [
         "npm:eslint-config-next@15.0.2",
         "npm:eslint@8",
+        "npm:framer-motion@^11.11.17",
         "npm:next@15.0.2",
         "npm:postcss@8",
         "npm:prettier@^3.3.3",
