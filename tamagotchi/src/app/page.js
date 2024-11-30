@@ -17,7 +17,7 @@ export default function Home() {
 
   function handleRestart() {
     setIsDead(false);
-    setStartPage(true);
+    setStartPage(false);
   }
 
   return (
