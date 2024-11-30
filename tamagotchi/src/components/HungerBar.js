@@ -1,9 +1,8 @@
 // components/HungerBar.js
-import React, { useState, useEffect } from "react";
+import Button from "./Button";
+import React, { useEffect } from "react";
 
-export default function HungerBar({ label, value, setIsDead }) {
-  const [progress, setProgress] = useState(value);
-
+export default function HungerBar({ label, progress, setProgress, setIsDead }) {
   function feed() {
     setProgress(Math.min(100, progress + 20));
   }
@@ -39,12 +38,7 @@ export default function HungerBar({ label, value, setIsDead }) {
           ></div>
         </div>
       </div>
-      <button
-        className="px-4 py-2 bg-red-400 text-white rounded"
-        onClick={feed}
-      >
-        Feed
-      </button>
+      <Button text="Feed" onClick={feed} />
     </div>
   );
 }

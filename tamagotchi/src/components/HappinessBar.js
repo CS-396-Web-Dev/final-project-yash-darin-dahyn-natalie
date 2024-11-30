@@ -1,9 +1,13 @@
 // components/HappinessBar.js
-import React, { useState, useEffect } from "react";
+import Button from "./Button";
+import React, { useEffect } from "react";
 
-export default function HappinessBar({ label, value, setIsDead }) {
-  const [progress, setProgress] = useState(value);
-
+export default function HappinessBar({
+  label,
+  progress,
+  setProgress,
+  setIsDead,
+}) {
   function play() {
     setProgress(Math.min(100, progress + 20));
   }
@@ -39,12 +43,7 @@ export default function HappinessBar({ label, value, setIsDead }) {
           ></div>
         </div>
       </div>
-      <button
-        className="px-4 py-2 bg-red-400 text-white rounded"
-        onClick={play}
-      >
-        Play
-      </button>
+      <Button text="Play" onClick={play} />
     </div>
   );
 }

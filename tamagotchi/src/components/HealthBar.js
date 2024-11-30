@@ -1,9 +1,8 @@
 // components/HealthBar.js
-import React, { useState, useEffect } from "react";
+import Button from "./Button";
+import React, { useEffect } from "react";
 
-export default function HealthBar({ label, value, setIsDead }) {
-  const [progress, setProgress] = useState(value);
-
+export default function HealthBar({ label, progress, setProgress, setIsDead }) {
   function care() {
     setProgress(Math.min(100, progress + 20));
   }
@@ -39,12 +38,7 @@ export default function HealthBar({ label, value, setIsDead }) {
           ></div>
         </div>
       </div>
-      <button
-        className="px-4 py-2 bg-red-400 text-white rounded"
-        onClick={care}
-      >
-        Take Care
-      </button>
+      <Button text="Take Care" onClick={care} />
     </div>
   );
 }
