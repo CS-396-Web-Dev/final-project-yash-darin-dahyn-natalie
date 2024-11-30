@@ -1,6 +1,5 @@
 // components/HungerBar.js
 import React, { useState, useEffect } from "react";
-import React, { useState, useEffect } from "react";
 
 export default function HungerBar({ label, value, setIsDead, setCurrency }) {
     const [progress, setProgress] = useState(value);
