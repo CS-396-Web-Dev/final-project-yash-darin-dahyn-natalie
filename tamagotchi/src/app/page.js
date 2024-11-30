@@ -1,8 +1,7 @@
 "use client"; // Ensure client-side rendering for animations
 
 import { motion } from "framer-motion";
-import ProgressBar from "../components/ProgressBar";
-import HungerBar from "../components/HungerBar";
+import HungerBar from "@/components/HungerBar";
 import HappinessBar from "@/components/HappinessBar";
 import HealthBar from "@/components/HealthBar";
 import React, { useState } from "react";
