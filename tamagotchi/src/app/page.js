@@ -5,19 +5,19 @@ import ProgressBar from "../components/ProgressBar";
 import HungerBar from "../components/HungerBar";
 import HappinessBar from "@/components/HappinessBar";
 import HealthBar from "@/components/HealthBar";
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
 export default function Home() {
-  const [isDead, setIsDead] = useState(false)
-  const [startPage, setStartPage] = useState(true)
+  const [isDead, setIsDead] = useState(false);
+  const [startPage, setStartPage] = useState(true);
 
   const handleStart = () => {
     setStartPage(false);
   };
 
   function handleRestart() {
-    setIsDead(false)
-    setStartPage(true)
+    setIsDead(false);
+    setStartPage(true);
   }
 
   return (
@@ -25,11 +25,10 @@ export default function Home() {
       <h1 className="text-4xl font-extrabold bf-black bg-clip-text mb-8">
         Your Tamagotchi
       </h1>{" "}
-
       {startPage && (
         <div className="flex flex-col items-center">
           <p className="mb-6 text-xl font-semibold">Welcome to Tamagotchi!</p>
-          <button 
+          <button
             className="mt-6 px-6 py-3 bg-red-400 font-bold text-white rounded"
             onClick={handleStart}
           >
@@ -37,16 +36,14 @@ export default function Home() {
           </button>
         </div>
       )}
-
       {!startPage && !isDead && (
-
         <main className="flex flex-col gap-8 row-start-2 items-center w-full max-w-[1200px]">
-          <HealthBar label="Health" value={100} setIsDead={setIsDead}/>
+          <HealthBar label="Health" value={100} setIsDead={setIsDead} />
 
-          <HungerBar label="Hunger" value={100} setIsDead={setIsDead}/>
+          <HungerBar label="Hunger" value={100} setIsDead={setIsDead} />
 
           <HappinessBar label="Happiness" value={100} setIsDead={setIsDead} />
-            
+
           {/* Animated Puffle */}
 
           <motion.img
@@ -67,15 +64,15 @@ export default function Home() {
           {/* Add other content below */}
         </main>
       )}
-
       <footer className="p-16 row-start-3 flex gap-6 flex-wrap items-center justify-center">
         This game is brought to you by Yash, Darin, Natalie and Da Hyun
       </footer>
-
       {isDead && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
           <div className="bg-white p-8 rounded shadow-lg text-center">
-            <h2 className="text-xl font-bold mb-4">Your Tamagotchi has died!</h2>
+            <h2 className="text-xl font-bold mb-4">
+              Your Tamagotchi has died!
+            </h2>
             <button
               className="px-6 py-2 bg-red-500 text-white rounded"
               onClick={handleRestart}
