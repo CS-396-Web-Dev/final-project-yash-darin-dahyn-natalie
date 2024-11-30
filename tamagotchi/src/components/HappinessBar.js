@@ -1,12 +1,26 @@
 // components/HappinessBar.js
 import React, { useState, useEffect } from "react";
 
-export default function HappinessBar({ label, value, setIsDead }) {
+export default function HappinessBar({ label, value, setIsDead, setCurrency }) {
     const [progress, setProgress] = useState(value);
 
-    function play() {
+    const calculateReward = (H, baseReward = 50, penaltyRate = 2) => {
+        let reward;
+        if (H >= 80) {
+            reward = -(H - 80) * penaltyRate;
+        } else if (H <= 20) {
+            reward = -(20 - H) * penaltyRate;
+        } else {
+            reward = baseReward;
+        }
+        return reward;
+    };
+
+    const play = () => {
+        const reward = calculateReward(progress);
         setProgress(Math.min(100, progress + 20));
-    }
+        setCurrency((prev) => prev + reward);
+    };
 
     function getColor() {
         if (progress >= 70) return "bg-yellow-300";
