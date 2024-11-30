@@ -4,12 +4,25 @@ import { motion } from "framer-motion";
 import HungerBar from "@/components/HungerBar";
 import HappinessBar from "@/components/HappinessBar";
 import HealthBar from "@/components/HealthBar";
+import Inventory from "@/components/Inventory";
+import Shop from "@/components/Shop";
 import React, { useState } from "react";
 
 export default function Home() {
   const [isDead, setIsDead] = useState(false);
   const [startPage, setStartPage] = useState(true);
-
+  const [inventory, setInventory] = useState({});
+  {
+    /* Bar States */
+  }
+  const [happinessProgress, setHappinessProgress] = useState(100);
+  const [healthProgress, setHealthProgress] = useState(100);
+  const [hungerProgress, setHungerProgress] = useState(100);
+  const barStates = {
+    happiness: { state: happinessProgress, setState: setHappinessProgress },
+    health: { state: healthProgress, setState: setHealthProgress },
+    hunger: { state: hungerProgress, setState: setHungerProgress },
+  };
   const handleStart = () => {
     setStartPage(false);
   };
@@ -37,11 +50,33 @@ export default function Home() {
       )}
       {!startPage && !isDead && (
         <main className="flex flex-col gap-8 row-start-2 items-center w-full max-w-[1200px]">
-          <HealthBar label="Health" value={100} setIsDead={setIsDead} />
+          <HealthBar
+            label="Health"
+            progress={healthProgress}
+            setProgress={setHealthProgress}
+            setIsDead={setIsDead}
+          />
 
-          <HungerBar label="Hunger" value={100} setIsDead={setIsDead} />
+          <HungerBar
+            label="Hunger"
+            progress={hungerProgress}
+            setProgress={setHungerProgress}
+            setIsDead={setIsDead}
+          />
 
-          <HappinessBar label="Happiness" value={100} setIsDead={setIsDead} />
+          <HappinessBar
+            label="Happiness"
+            progress={happinessProgress}
+            setProgress={setHappinessProgress}
+            setIsDead={setIsDead}
+          />
+
+          {/* Inventory */}
+          <Inventory
+            inventory={inventory}
+            setInventory={setInventory}
+            barStates={barStates}
+          />
 
           {/* Animated Puffle */}
 
@@ -61,6 +96,7 @@ export default function Home() {
             }}
           />
           {/* Add other content below */}
+          <Shop inventory={inventory} setInventory={setInventory} />
         </main>
       )}
       <footer className="p-16 row-start-3 flex gap-6 flex-wrap items-center justify-center">
