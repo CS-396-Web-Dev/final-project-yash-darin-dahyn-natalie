@@ -39,6 +39,7 @@ export default function Home() {
         setHealthProgress(100);
         setHungerProgress(100);
         setInventory({});
+        localStorage.removeItem("gameState");
     }
 
     useEffect(() => {
@@ -58,6 +59,35 @@ export default function Home() {
     const sizeMultiplier = 1 + growthStage * 0.4;
     const width = 60 * sizeMultiplier;
     const height = 13 * sizeMultiplier;
+
+    useEffect(() => {
+        const storedData = JSON.parse(localStorage.getItem("gameState"));
+        if (storedData) {
+            setCurrency(storedData.currency);
+            setInventory(storedData.inventory);
+            setGrowthStage(storedData.growthStage);
+            setHappinessProgress(storedData.happinessProgress);
+            setHealthProgress(storedData.healthProgress);
+            setHungerProgress(storedData.hungerProgress);
+            setIsDead(storedData.isDead);
+            setStartPage(storedData.startPage);
+        }
+    }, []);
+
+
+    useEffect(() => {
+        const gameState = {
+            currency,
+            inventory,
+            growthStage,
+            happinessProgress,
+            healthProgress,
+            hungerProgress,
+            isDead,
+            startPage,
+        };
+        localStorage.setItem("gameState", JSON.stringify(gameState));
+    }, [currency, inventory, growthStage, happinessProgress, healthProgress, hungerProgress, isDead, startPage]);
 
     return (
         <div className="grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
