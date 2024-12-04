@@ -148,8 +148,24 @@ export default function Home() {
 
                     <motion.img
                         className="dark:invert mt-5"
-                        src="/puffle.svg"
-                        alt="Tamagotchi Puffle"
+                        src={
+                            happinessProgress <= 75
+                                ? "/angry-puffle.svg" 
+                                : hungerProgress <= 50
+                                ? "/begging-puffle.svg" 
+                                : healthProgress <= 60
+                                ? "/sick-puffle.svg" 
+                                : "/satisfied-puffle.svg" 
+                        }
+                        alt={
+                            happinessProgress <= 50
+                                ? "Sad Puffle"
+                                : hungerProgress <= 50
+                                ? "Hungry Puffle"
+                                : healthProgress <= 60
+                                ? "Sick Puffle" 
+                                : "Tamagotchi Puffle"
+                        }
                         width={width}
                         height={height}
                         animate={{
